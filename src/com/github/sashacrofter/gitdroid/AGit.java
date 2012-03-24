@@ -1,14 +1,28 @@
 package com.github.sashacrofter.gitdroid;
 
+import java.io.File;
 import java.util.HashMap;
+
+import org.eclipse.jgit.api.Git;
+import org.eclipse.jgit.lib.Repository;
 
 public class AGit
 {
+	private Git git;
+	private Repository repo;
 	
-	
-	public AGit()
+	/**
+	 * Creates AGit object to interact with based on the current working directory
+	 * @param CWD
+	 */
+	public AGit(File CWD)
 	{
+		//TODO make new repository
 		
+		//note to self: use baseRepoBuilder.setGitDir(CWD) to make git object probably
+		
+		//repo = new Repository(BaseRepositoryBuilder);
+		git = new Git(null);
 	}
 	
 	/**
@@ -28,10 +42,9 @@ public class AGit
 		//TODO print like in "$git" instead
 		
 		String cmd = command.toLowerCase();
-		if(cmd.equals("add")) //TODO provide method calls to each of these
-		{
-			
-		}
+		//TODO provide method calls to each of these
+		//TODO change logic to one-liners
+		if(cmd.equals("add")) this.add(args, argmap);
 		else if(cmd.equals("bisect"))
 		{
 			
@@ -66,7 +79,7 @@ public class AGit
 		}
 		else if(cmd.equals("init"))
 		{
-			
+			//TODO allow instantiation of a repository
 		}
 		else if(cmd.equals("log"))
 		{
@@ -112,4 +125,10 @@ public class AGit
 	}
 	
 	//TODO add git calls and argmap parsing
+	
+	private String add(String[] args, HashMap<String, String> argmap)
+	{
+		
+		return null;
+	}
 }
