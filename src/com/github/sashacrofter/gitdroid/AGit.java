@@ -1,10 +1,12 @@
 package com.github.sashacrofter.gitdroid;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.lib.Repository;
+import org.eclipse.jgit.storage.file.FileRepositoryBuilder;
 
 public class AGit
 {
@@ -12,17 +14,42 @@ public class AGit
 	private Repository repo;
 	
 	/**
-	 * Creates AGit object to interact with based on the current working directory
-	 * @param CWD
+	 * Creates AGit object to interact with based on the current working directory.
+	 * Any time the user calls a git method, there needs to be an AGit object to
+	 * interact with it.
+	 * @param CWD Current Working Directory
 	 */
 	public AGit(File CWD)
 	{
-		//TODO make new repository
+		try {
+			repo = new FileRepositoryBuilder()
+					.setGitDir(CWD)
+					.readEnvironment()
+					.findGitDir()
+					.build();
+		} catch (IOException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		//TODO make new repository still
 		
-		//note to self: use baseRepoBuilder.setGitDir(CWD) to make git object probably
-		
-		//repo = new Repository(BaseRepositoryBuilder);
 		git = new Git(null);
+	}
+	
+	/**
+	 * Saves changes (such as those by $git add [file],) and should be called
+	 * prior to no longer using this AGit instance.
+	 * @return true if successful, false if saving (and therefore deletion)
+	 * has failed.
+	 */
+	public boolean save()
+	{
+		//Does anything need to be saved? Wouldn't JGit handle that anyway?
+		//TODO make sure things are saved properly (but don't save this AGit)
+		//We could use this.finalize() to actually get rid of this instance,
+		//but using this.finalize() is bad practice.
+		return true;
 	}
 	
 	/**
@@ -79,6 +106,7 @@ public class AGit
 		}
 		else if(cmd.equals("init"))
 		{
+			
 			//TODO allow instantiation of a repository
 		}
 		else if(cmd.equals("log"))
