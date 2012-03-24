@@ -83,7 +83,10 @@ public class AGit
 		String cmd = command.toLowerCase();
 		//TODO provide method calls to each of these
 		//TODO change logic to one-liners
-		if(cmd.equals("add")) this.add(args, argmap);
+		
+		
+		//if(cmd.equals("add")) this.add(args, argmap);
+		if (cmd.equals("add")) new Git_Add(args, argmap).add();
 		else if(cmd.equals("bisect"))
 		{
 			
