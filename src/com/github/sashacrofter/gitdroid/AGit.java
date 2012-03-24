@@ -5,22 +5,26 @@ import java.io.IOException;
 import java.util.HashMap;
 
 import org.eclipse.jgit.api.Git;
+import org.eclipse.jgit.api.InitCommand;
 import org.eclipse.jgit.lib.Repository;
 import org.eclipse.jgit.storage.file.FileRepositoryBuilder;
 
 public class AGit
 {
+	private final File dir; //Absolute path for the directory this AGit was created at
+	
 	private Git git;
 	private Repository repo;
 	
 	/**
 	 * Creates AGit object to interact with based on the current working directory.
-	 * Any time the user calls a git method, there needs to be an AGit object to
+	 * Any time the user calls $git, there needs to be an AGit object to
 	 * interact with it.
 	 * @param CWD Current Working Directory
 	 */
 	public AGit(File CWD)
 	{
+		this.dir = CWD.getAbsoluteFile();
 		try {
 			repo = new FileRepositoryBuilder()
 					.setGitDir(CWD)
@@ -35,6 +39,14 @@ public class AGit
 		//TODO make new repository still
 		
 		git = new Git(null);
+	}
+	
+	/**
+	 * @return Current Wo
+	 */
+	public File getDir()
+	{
+		return this.dir;
 	}
 	
 	/**
@@ -104,11 +116,7 @@ public class AGit
 		{
 			
 		}
-		else if(cmd.equals("init"))
-		{
-			
-			//TODO allow instantiation of a repository
-		}
+		else if(cmd.equals("init")) this.init(args, argmap);
 		else if(cmd.equals("log"))
 		{
 			
@@ -154,9 +162,38 @@ public class AGit
 	
 	//TODO add git calls and argmap parsing
 	
+	/**
+	 * Adds all untracked files specified in args recursively
+	 * @param args
+	 * @param argmap
+	 * @return
+	 */
 	private String add(String[] args, HashMap<String, String> argmap)
 	{
 		
-		return null;
+		return "Called add";
+	}
+	
+	/**
+	 * equivalent to $ git init
+	 * @param args If specified and args[0] is a valid file, initializes in that
+	 * directory instead.
+	 * @param argmap
+	 * @return
+	 */
+	private String init(String[] args, HashMap<String, String> argmap)
+	{
+		File initFile = this.getDir(); //Set initiation location to dir by default
+		
+		if(args.length > 0) //Allow init of non-this.getDir() directory
+		{
+			File f = new File(args[0]);
+			if(f.exists() && f.isDirectory()) initFile = f;
+		}
+			
+		InitCommand init = Git.init(); //Create InitCommand object to call
+        init.setDirectory(initFile); //Set the directory to the specified one
+        init.call(); //Create the repository
+		return "Called init";
 	}
 }
