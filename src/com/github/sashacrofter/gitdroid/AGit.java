@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.util.HashMap;
 
 import org.eclipse.jgit.api.Git;
-import org.eclipse.jgit.api.InitCommand;
 import org.eclipse.jgit.lib.Repository;
 import org.eclipse.jgit.storage.file.FileRepositoryBuilder;
 
@@ -39,16 +38,8 @@ public class AGit
 		//TODO make new repository still
 		
 		git = new Git(null);
-	}
-	
-	/**
-	 * @return Current Wo
-	 */
-	public File getDir()
-	{
-		return this.dir;
-	}
-	
+	}//close constructor
+
 	/**
 	 * Saves changes (such as those by $git add [file],) and should be called
 	 * prior to no longer using this AGit instance.
@@ -73,130 +64,52 @@ public class AGit
 	 * (Value) if any such were included.
 	 * @return String The String output of the corresponding Git method.
 	 */
-	public String GitCall(String command, String[] args,
-			HashMap<String, String> argmap)
-	{
+	public String GitCall(String command, String[] args, HashMap<String, String> argmap) {
 		//Prints if gets to the end without finding a matching command
-		String commandNotFound = "Command not found.";
-		//TODO print like in "$git" instead
-		
+		String commandNotFound = "Command not found.";		
 		String cmd = command.toLowerCase();
-		//TODO provide method calls to each of these
-		//TODO change logic to one-liners
 		
+		if (cmd.equals("add")) {new Git_Add(args, argmap).add(); return "$git add";}
 		
-		//if(cmd.equals("add")) this.add(args, argmap);
-		if (cmd.equals("add")) new Git_Add(args, argmap).add();
-		else if(cmd.equals("bisect"))
-		{
-			
-		}
-		else if(cmd.equals("branch"))
-		{
-			
-		}
-		else if(cmd.equals("checkout"))
-		{
-			
-		}
-		else if(cmd.equals("clone"))
-		{
-			
-		}
-		else if(cmd.equals("commit"))
-		{
-			
-		}
-		else if(cmd.equals("diff"))
-		{
-			
-		}
-		else if(cmd.equals("fetch"))
-		{
-			
-		}
-		else if(cmd.equals("grep"))
-		{
-			
-		}
-		else if(cmd.equals("init")) this.init(args, argmap);
-		else if(cmd.equals("log"))
-		{
-			
-		}
-		else if(cmd.equals("merge"))
-		{
-			
-		}
-		else if(cmd.equals("mv"))
-		{
-			
-		}
-		else if(cmd.equals("pull"))
-		{
-			
-		}
-		else if(cmd.equals("rebase"))
-		{
-			
-		}
-		else if(cmd.equals("reset"))
-		{
-			
-		}
-		else if(cmd.equals("rm"))
-		{
-			
-		}
-		else if(cmd.equals("show"))
-		{
-			
-		}
-		else if(cmd.equals("status"))
-		{
-			
-		}
-		else if(cmd.equals("tag"))
-		{
-			
-		}
-		return commandNotFound;
-	}
+		else if(cmd.equals("bisect")) {new Git_Bisect(args, argmap).bisect(); return "$git bisect";}
+		
+		else if(cmd.equals("branch")) {new Git_Branch(args, argmap).branch(); return "$git branch";}
+		
+		else if(cmd.equals("checkout")) {new Git_Checkout(args, argmap).checkout(); return "$git checkout";}
+
+		else if(cmd.equals("clone")) {new Git_Clone(args, argmap).clone(); return "$git clone";}
+
+		else if(cmd.equals("commit")) {new Git_Commit(args, argmap).commit(); return "$git commit";}
+
+		else if(cmd.equals("diff")) {new Git_Diff(args, argmap).diff(); return "$git diff";}
+
+		else if(cmd.equals("fetch")) {new Git_Fetch(args, argmap).fetch(); return "$git fetch";}
+
+		else if(cmd.equals("grep")) {new Git_Grep(args, argmap).grep(); return "$git grep";}
+
+		else if(cmd.equals("init")) {new Git_Init(args, argmap, dir).init(); return "$git init";}
+		
+		else if(cmd.equals("log")) {new Git_Log(args, argmap).log(); return "$git log";}
+
+		else if(cmd.equals("merge")) {new Git_Merge(args, argmap).merge(); return "$git merge";}
+		
+		else if(cmd.equals("mv")) {new Git_Mv(args, argmap).mv(); return "$git mv";}
+
+		else if(cmd.equals("pull")) {new Git_Pull(args, argmap).pull(); return "$git pull";}
+
+		else if(cmd.equals("rebase")) {new Git_Rebase(args, argmap).rebase(); return "$git rebase";}
+
+		else if(cmd.equals("reset")) {new Git_Reset(args, argmap).reset(); return "$git reset";}
+
+		else if(cmd.equals("rm")) {new Git_Rm(args, argmap).rm(); return "$git rm";}
+
+		else if(cmd.equals("show")) {new Git_Show(args, argmap).show(); return "$git show";}
+
+		else if(cmd.equals("status")) {new Git_Status(args, argmap).status(); return "$git status";}
+
+		else if(cmd.equals("tag")) {new Git_Tag(args, argmap).tag(); return "$git tag";}
+
+		else return commandNotFound;
+	}//close GitCall
 	
-	//TODO add git calls and argmap parsing
-	
-	/**
-	 * Adds all untracked files specified in args recursively
-	 * @param args
-	 * @param argmap
-	 * @return
-	 */
-	private String add(String[] args, HashMap<String, String> argmap)
-	{
-		
-		return "Called add";
-	}
-	
-	/**
-	 * equivalent to $ git init
-	 * @param args If specified and args[0] is a valid file, initializes in that
-	 * directory instead.
-	 * @param argmap
-	 * @return
-	 */
-	private String init(String[] args, HashMap<String, String> argmap)
-	{
-		File initFile = this.getDir(); //Set initiation location to dir by default
-		
-		if(args.length > 0) //Allow init of non-this.getDir() directory
-		{
-			File f = new File(args[0]);
-			if(f.exists() && f.isDirectory()) initFile = f;
-		}
-			
-		InitCommand init = Git.init(); //Create InitCommand object to call
-        init.setDirectory(initFile); //Set the directory to the specified one
-        init.call(); //Create the repository
-		return "Called init";
-	}
-}
+} //close AGit

@@ -11,7 +11,7 @@ public class Git_Add {
 		super();
 		this.args = _args;
 		this.argmap = _argmap;
-	}
+	}//close constructor
 	
 	//TODO add git calls and argmap parsing
 	
@@ -25,6 +25,6 @@ public class Git_Add {
 	{
 		
 		return "Called add";
-	}
+	}//close add
 
-}
+}//close Git_Add
