@@ -69,7 +69,7 @@ public class AGit
 		String commandNotFound = "Command not found.";		
 		String cmd = command.toLowerCase();
 		
-		if (cmd.equals("add")) {new Git_Add(args, argmap).add(); return "$git add";}
+		if (cmd.equals("add")) {new Git_Add(args, argmap, repo).add(); return "$git add";}
 		
 		else if(cmd.equals("bisect")) {new Git_Bisect(args, argmap).bisect(); return "$git bisect";}
 		
