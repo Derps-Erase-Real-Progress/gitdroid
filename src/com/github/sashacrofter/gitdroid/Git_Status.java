@@ -2,25 +2,14 @@ package com.github.sashacrofter.gitdroid;
 
 import java.util.HashMap;
 
-public class Git_Status {
+
+public class Git_Status extends GitBase {
 	
-	private String [] args;
-	private HashMap <String, String> argmap;
 	
-	public Git_Status(String [] _args, HashMap <String, String> _argmap) {
-		super();
-		this.args = _args;
-		this.argmap = _argmap;
-	}//close constructor
-	
-	/**
-	 * 
-	 * @return
-	 */
-	
-	protected String status() {
-		
-		return "Called status";
-	}//close status
-	
+	public static String run(AGit agit, String[] args, HashMap<String, String> argmap)
+	{
+		//TODO do JGit add call
+		return "Called Status";
+	}
+
 }//close Git_Status

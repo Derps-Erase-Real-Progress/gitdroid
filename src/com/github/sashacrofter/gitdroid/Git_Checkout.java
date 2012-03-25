@@ -2,25 +2,14 @@ package com.github.sashacrofter.gitdroid;
 
 import java.util.HashMap;
 
-public class Git_Checkout {
+
+public class Git_Checkout extends GitBase {
 	
-	private String [] args;
-	private HashMap <String, String> argmap;
 	
-	public Git_Checkout(String [] _args, HashMap <String, String> _argmap) {
-		super();
-		this.args = _args;
-		this.argmap = _argmap;
-	}//close constructor
-	
-	/**
-	 * 
-	 * @return
-	 */
-	
-	protected String checkout() {
-		
-		return "Called checkout";
-	}//close checkout
-	
+	public static String run(AGit agit, String[] args, HashMap<String, String> argmap)
+	{
+		//TODO do JGit add call
+		return "Called Checkout";
+	}
+
 }//close Git_Checkout

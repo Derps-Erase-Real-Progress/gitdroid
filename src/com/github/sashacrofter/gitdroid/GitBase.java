@@ -2,7 +2,7 @@ package com.github.sashacrofter.gitdroid;
 
 import java.util.HashMap;
 
-public abstract class Git
+public abstract class GitBase
 {
 	/**
 	 * Performs the proper call to JGit, with no other parameters needed
@@ -14,8 +14,8 @@ public abstract class Git
 	 * use would work on the boolean argmap.contains("--option") but
 	 * also might retrieve the value from the option's key.
 	 */
-	public static void run(AGit agit, String[] args, HashMap<String, String> argmap)
+	public static String run(AGit agit, String[] args, HashMap<String, String> argmap)
 	{
-		System.out.println("Method not defined in this class.");
+		return "Method not defined in this class.";
 	}
 }

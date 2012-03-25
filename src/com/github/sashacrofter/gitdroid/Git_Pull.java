@@ -2,25 +2,14 @@ package com.github.sashacrofter.gitdroid;
 
 import java.util.HashMap;
 
-public class Git_Pull {
+
+public class Git_Pull extends GitBase {
 	
-	private String [] args;
-	private HashMap <String, String> argmap;
 	
-	public Git_Pull(String [] _args, HashMap <String, String> _argmap) {
-		super();
-		this.args = _args;
-		this.argmap = _argmap;
-	}//close constructor
-	
-	/**
-	 * 
-	 * @return
-	 */
-	
-	protected String pull() {
-		
-		return "Called pull";
-	}//close pull
-	
+	public static String run(AGit agit, String[] args, HashMap<String, String> argmap)
+	{
+		//TODO do JGit add call
+		return "Called Pull";
+	}
+
 }//close Git_Pull

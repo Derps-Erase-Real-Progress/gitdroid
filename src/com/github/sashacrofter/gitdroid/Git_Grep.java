@@ -2,25 +2,14 @@ package com.github.sashacrofter.gitdroid;
 
 import java.util.HashMap;
 
-public class Git_Grep {
+
+public class Git_Grep extends GitBase {
 	
-	private String [] args;
-	private HashMap <String, String> argmap;
 	
-	public Git_Grep(String [] _args, HashMap <String, String> _argmap) {
-		super();
-		this.args = _args;
-		this.argmap = _argmap;
-	}//close constructor
-	
-	/**
-	 * 
-	 * @return
-	 */
-	
-	protected String grep() {
-		
-		return "Called grep";
-	}//close grep
-	
+	public static String run(AGit agit, String[] args, HashMap<String, String> argmap)
+	{
+		//TODO do JGit add call
+		return "Called Grep";
+	}
+
 }//close Git_Grep

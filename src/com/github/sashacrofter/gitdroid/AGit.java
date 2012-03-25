@@ -39,20 +39,17 @@ public class AGit
 		
 		git = new Git(null);
 	}//close constructor
-
-	/**
-	 * Saves changes (such as those by $git add [file],) and should be called
-	 * prior to no longer using this AGit instance.
-	 * @return true if successful, false if saving (and therefore deletion)
-	 * has failed.
-	 */
-	public boolean save()
-	{
-		//Does anything need to be saved? Wouldn't JGit handle that anyway?
-		//TODO make sure things are saved properly (but don't save this AGit)
-		//We could use this.finalize() to actually get rid of this instance,
-		//but using this.finalize() is bad practice.
-		return true;
+	
+	public File getDir() {
+		return this.dir;
+	}
+	
+	public Git getGit() {
+		return this.git;
+	}
+	
+	public Repository getRepo() {
+		return this.repo;
 	}
 	
 	/**
@@ -69,45 +66,45 @@ public class AGit
 		String commandNotFound = "Command not found.";
 		String cmd = command.toLowerCase();
 		
-		if (cmd.equals("add")) {new Git_Add(args, argmap, repo, dir.getAbsolutePath()).add(); return "$git add";}
+		if (cmd.equals("add")) {Git_Add.run(this, args, argmap); return "$git add";}
 		
-		else if(cmd.equals("bisect")) {new Git_Bisect(args, argmap).bisect(); return "$git bisect";}
+		else if(cmd.equals("bisect")) {Git_Bisect.run(this, args, argmap); return "$git bisect";}
 		
-		else if(cmd.equals("branch")) {new Git_Branch(args, argmap).branch(); return "$git branch";}
+		else if(cmd.equals("branch")) {Git_Branch.run(this, args, argmap); return "$git branch";}
 		
-		else if(cmd.equals("checkout")) {new Git_Checkout(args, argmap).checkout(); return "$git checkout";}
+		else if(cmd.equals("checkout")) {Git_Checkout.run(this, args, argmap); return "$git checkout";}
 
-		else if(cmd.equals("clone")) {new Git_Clone(args, argmap).clone(); return "$git clone";}
+		else if(cmd.equals("clone")) {Git_Clone.run(this, args, argmap); return "$git clone";}
 
-		else if(cmd.equals("commit")) {new Git_Commit(args, argmap).commit(); return "$git commit";}
+		else if(cmd.equals("commit")) {Git_Commit.run(this, args, argmap); return "$git commit";}
 
-		else if(cmd.equals("diff")) {new Git_Diff(args, argmap).diff(); return "$git diff";}
+		else if(cmd.equals("diff")) {Git_Diff.run(this, args, argmap); return "$git diff";}
 
-		else if(cmd.equals("fetch")) {new Git_Fetch(args, argmap).fetch(); return "$git fetch";}
+		else if(cmd.equals("fetch")) {Git_Fetch.run(this, args, argmap); return "$git fetch";}
 
-		else if(cmd.equals("grep")) {new Git_Grep(args, argmap).grep(); return "$git grep";}
+		else if(cmd.equals("grep")) {Git_Grep.run(this, args, argmap); return "$git grep";}
 
-		else if(cmd.equals("init")) {new Git_Init(args, argmap, dir).init(); return "$git init";}
+		else if(cmd.equals("init")) {Git_Init.run(this, args, argmap); return "$git init";}
 		
-		else if(cmd.equals("log")) {new Git_Log(args, argmap).log(); return "$git log";}
+		else if(cmd.equals("log")) {Git_Log.run(this, args, argmap); return "$git log";}
 
-		else if(cmd.equals("merge")) {new Git_Merge(args, argmap).merge(); return "$git merge";}
+		else if(cmd.equals("merge")) {Git_Merge.run(this, args, argmap); return "$git merge";}
 		
-		else if(cmd.equals("mv")) {new Git_Mv(args, argmap).mv(); return "$git mv";}
+		else if(cmd.equals("mv")) {Git_Mv.run(this, args, argmap); return "$git mv";}
 
-		else if(cmd.equals("pull")) {new Git_Pull(args, argmap).pull(); return "$git pull";}
+		else if(cmd.equals("pull")) {Git_Pull.run(this, args, argmap); return "$git pull";}
 
-		else if(cmd.equals("rebase")) {new Git_Rebase(args, argmap).rebase(); return "$git rebase";}
+		else if(cmd.equals("rebase")) {Git_Rebase.run(this, args, argmap); return "$git rebase";}
 
-		else if(cmd.equals("reset")) {new Git_Reset(args, argmap).reset(); return "$git reset";}
+		else if(cmd.equals("reset")) {Git_Reset.run(this, args, argmap); return "$git reset";}
 
-		else if(cmd.equals("rm")) {new Git_Rm(args, argmap).rm(); return "$git rm";}
+		else if(cmd.equals("rm")) {Git_Rm.run(this, args, argmap); return "$git rm";}
 
-		else if(cmd.equals("show")) {new Git_Show(args, argmap).show(); return "$git show";}
+		else if(cmd.equals("show")) {Git_Show.run(this, args, argmap); return "$git show";}
 
-		else if(cmd.equals("status")) {new Git_Status(args, argmap).status(); return "$git status";}
+		else if(cmd.equals("status")) {Git_Status.run(this, args, argmap); return "$git status";}
 
-		else if(cmd.equals("tag")) {new Git_Tag(args, argmap).tag(); return "$git tag";}
+		else if(cmd.equals("tag")) {Git_Tag.run(this, args, argmap); return "$git tag";}
 
 		else return commandNotFound;
 	}//close GitCall
