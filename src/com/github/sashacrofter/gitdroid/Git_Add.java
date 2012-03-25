@@ -14,6 +14,11 @@ public class Git_Add extends Git {
 	private AddCommand add;
 	private String dir;
 	
+	public static void run(AGit agit, String[] args, HashMap<String, String> argmap)
+	{
+		//TODO do JGit add call
+	}
+	
 	public Git_Add(String [] _args, HashMap <String, String> _argmap, Repository _repo, String _dir) {
 		super();
 		this.args = _args;
