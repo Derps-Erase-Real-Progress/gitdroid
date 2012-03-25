@@ -66,47 +66,47 @@ public class AGit
 		String commandNotFound = "Command not found.";
 		String cmd = command.toLowerCase();
 		
-		if (cmd.equals("add")) {Git_Add.run(this, args, argmap); return "$git add";}
+		if (cmd.equals("add")) return Git_Add.run(this, args, argmap);
 		
-		else if(cmd.equals("bisect")) {Git_Bisect.run(this, args, argmap); return "$git bisect";}
+		else if(cmd.equals("bisect")) return Git_Bisect.run(this, args, argmap);
 		
-		else if(cmd.equals("branch")) {Git_Branch.run(this, args, argmap); return "$git branch";}
+		else if(cmd.equals("branch")) return Git_Branch.run(this, args, argmap);
 		
-		else if(cmd.equals("checkout")) {Git_Checkout.run(this, args, argmap); return "$git checkout";}
+		else if(cmd.equals("checkout")) return Git_Checkout.run(this, args, argmap);
 
-		else if(cmd.equals("clone")) {Git_Clone.run(this, args, argmap); return "$git clone";}
+		else if(cmd.equals("clone")) return Git_Clone.run(this, args, argmap);
 
-		else if(cmd.equals("commit")) {Git_Commit.run(this, args, argmap); return "$git commit";}
+		else if(cmd.equals("commit")) return Git_Commit.run(this, args, argmap);
 
-		else if(cmd.equals("diff")) {Git_Diff.run(this, args, argmap); return "$git diff";}
+		else if(cmd.equals("diff")) return Git_Diff.run(this, args, argmap);
 
-		else if(cmd.equals("fetch")) {Git_Fetch.run(this, args, argmap); return "$git fetch";}
+		else if(cmd.equals("fetch")) return Git_Fetch.run(this, args, argmap);
 
-		else if(cmd.equals("grep")) {Git_Grep.run(this, args, argmap); return "$git grep";}
+		else if(cmd.equals("grep")) return Git_Grep.run(this, args, argmap);
 
-		else if(cmd.equals("init")) {Git_Init.run(this, args, argmap); return "$git init";}
+		else if(cmd.equals("init")) return Git_Init.run(this, args, argmap);
 		
-		else if(cmd.equals("log")) {Git_Log.run(this, args, argmap); return "$git log";}
+		else if(cmd.equals("log")) return Git_Log.run(this, args, argmap);
 
-		else if(cmd.equals("merge")) {Git_Merge.run(this, args, argmap); return "$git merge";}
+		else if(cmd.equals("merge")) return Git_Merge.run(this, args, argmap);
 		
-		else if(cmd.equals("mv")) {Git_Mv.run(this, args, argmap); return "$git mv";}
+		else if(cmd.equals("mv")) return Git_Mv.run(this, args, argmap);
 
-		else if(cmd.equals("pull")) {Git_Pull.run(this, args, argmap); return "$git pull";}
+		else if(cmd.equals("pull")) return Git_Pull.run(this, args, argmap);
 
-		else if(cmd.equals("rebase")) {Git_Rebase.run(this, args, argmap); return "$git rebase";}
+		else if(cmd.equals("rebase")) return Git_Rebase.run(this, args, argmap);
 
-		else if(cmd.equals("reset")) {Git_Reset.run(this, args, argmap); return "$git reset";}
+		else if(cmd.equals("reset")) return Git_Reset.run(this, args, argmap);
 
-		else if(cmd.equals("rm")) {Git_Rm.run(this, args, argmap); return "$git rm";}
+		else if(cmd.equals("rm")) return Git_Rm.run(this, args, argmap);
 
-		else if(cmd.equals("show")) {Git_Show.run(this, args, argmap); return "$git show";}
+		else if(cmd.equals("show")) return Git_Show.run(this, args, argmap);
 
-		else if(cmd.equals("status")) {Git_Status.run(this, args, argmap); return "$git status";}
+		else if(cmd.equals("status")) return Git_Status.run(this, args, argmap);
 
-		else if(cmd.equals("tag")) {Git_Tag.run(this, args, argmap); return "$git tag";}
+		else if(cmd.equals("tag")) return Git_Tag.run(this, args, argmap);
 
-		else return commandNotFound;
+		else return commandNotFound; //TODO print statement from $git
 	}//close GitCall
 	
 } //close AGit
