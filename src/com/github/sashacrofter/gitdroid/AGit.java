@@ -66,10 +66,10 @@ public class AGit
 	 */
 	public String GitCall(String command, String[] args, HashMap<String, String> argmap) {
 		//Prints if gets to the end without finding a matching command
-		String commandNotFound = "Command not found.";		
+		String commandNotFound = "Command not found.";
 		String cmd = command.toLowerCase();
 		
-		if (cmd.equals("add")) {new Git_Add(args, argmap, repo).add(); return "$git add";}
+		if (cmd.equals("add")) {new Git_Add(args, argmap, repo, dir.getAbsolutePath()).add(); return "$git add";}
 		
 		else if(cmd.equals("bisect")) {new Git_Bisect(args, argmap).bisect(); return "$git bisect";}
 		
