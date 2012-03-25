@@ -6,7 +6,7 @@ import org.eclipse.jgit.api.AddCommand;
 import org.eclipse.jgit.api.errors.NoFilepatternException;
 import org.eclipse.jgit.lib.Repository;
 
-public class Git_Add {
+public class Git_Add extends Git {
 	
 	private String [] args;
 	private HashMap <String, String> argmap;
