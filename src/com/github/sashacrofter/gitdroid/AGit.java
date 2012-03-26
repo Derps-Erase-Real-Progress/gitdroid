@@ -61,7 +61,7 @@ public class AGit
 	 * (Value) if any such were included.
 	 * @return String The String output of the corresponding Git method.
 	 */
-	public String GitCall(String command, String[] args, HashMap<String, String> argmap) {
+	public String gitCall(String command, String[] args, HashMap<String, String> argmap) {
 		//Prints if gets to the end without finding a matching command
 		String commandNotFound = "Command not found.";
 		String cmd = command.toLowerCase();
