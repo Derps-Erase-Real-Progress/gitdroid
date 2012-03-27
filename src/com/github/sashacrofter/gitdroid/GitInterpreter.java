@@ -9,15 +9,6 @@ public class GitInterpreter
 	 * The array of commands that gitdroid should parse specially.
 	 */
 	public final ArrayList<String> parseArray;
-	
-		//the following ⑥ lines are absolutely vital to the proper functioning of this program
-		//O----------------------⎞                    ☔
-		//-----------------------|	~ ~ ~ ~ ~ ~ ~ ~ ~ ☻
-		//O----------------------⎠
-		//'nuff said.
-	private class Is { public static final boolean sparta = false; public boolean SPARTA() { return this.sparta;}}
-	private Is is = new Is();
-	
 	private HashMap<String, String> expandMap;
 	private ArrayList<String> optionValueList;
 	
