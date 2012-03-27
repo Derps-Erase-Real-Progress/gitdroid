@@ -10,24 +10,22 @@ public class GitInterpreter
 	 */
 	public final ArrayList<String> parseArray;
 	
-		//the following ⑥ lines are absolutely vital to the proper functioning of this program
-		//O----------------------⎞                    ☔
-		//-----------------------|	~ ~ ~ ~ ~ ~ ~ ~ ~ ☻
-		//O----------------------⎠
+		//the following 4 lines are absolutely vital to the proper functioning of this program
+		//O----------------------\             
+		//------------------------|	~ ~ ~ ~ ~ ~ ~ ~ ~ 
+		//O----------------------/
 		//'nuff said.
-	private class Is { public static final boolean sparta = false; public boolean SPARTA() { return this.sparta;}}
-	private Is is = new Is();
 	
 	private HashMap<String, String> expandMap;
 	private ArrayList<String> optionValueList;
 	
-	public GitInterpreter()
+	public GitInterpreter(HashMap <String, String> _expandMap)
 	{
 		this.parseArray = new ArrayList<String>();
 		this.parseArray.add("git");
 		
-		this.expandMap = new HashMap<String, String>();
-		this.expandMap.put("-v", "--verbose");
+		this.expandMap = _expandMap;
+
 		//TODO expand all variables like this.
 		
 		this.optionValueList = new ArrayList<String>();
