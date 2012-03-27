@@ -23,10 +23,15 @@ public class GitInterpreter
 	{
 		this.parseArray = new ArrayList<String>();
 		this.parseArray.add("git");
-		
+		/**
+		 * this way, the variables are already expanded from their own classes
+		 * thus, just putting them into this.expandMap makes it so each class has
+		 * their own selective variables, becuase really, all of them have a bit
+		 * different variables if you look at it. so this creates GitInterpreter as
+		 * an object in the previous class and contains the expanded map and can be
+		 * accessed from the previous class of whatever class it was in.
+		 */
 		this.expandMap = _expandMap;
-
-		//TODO expand all variables like this.
 		
 		this.optionValueList = new ArrayList<String>();
 		//TODO Add value-requiring options
