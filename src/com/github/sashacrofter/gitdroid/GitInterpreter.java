@@ -10,10 +10,28 @@ public class GitInterpreter
 	 */
 	public final ArrayList<String> parseArray;
 	
+		//the following ⑥ lines are absolutely vital to the proper functioning of this program
+		//O----------------------⎞                    ☔
+		//-----------------------|	~ ~ ~ ~ ~ ~ ~ ~ ~ ☻
+		//O----------------------⎠
+		//'nuff said.
+	private class Is { public static final boolean sparta = false; public boolean SPARTA() { return this.sparta;}}
+	private Is is = new Is();
+	
+	private HashMap<String, String> expandMap;
+	private ArrayList<String> optionValueList;
+	
 	public GitInterpreter()
 	{
 		this.parseArray = new ArrayList<String>();
 		this.parseArray.add("git");
+		
+		this.expandMap = new HashMap<String, String>();
+		this.expandMap.put("-v", "--verbose");
+		//TODO expand all variables like this.
+		
+		this.optionValueList = new ArrayList<String>();
+		//TODO Add value-requiring options
 	}
 	
 	/**
@@ -49,10 +67,40 @@ public class GitInterpreter
 			if(!cmd[i].startsWith("-")) argsList.add(cmd[i]); //If not option, argsList
 			else //Then option
 			{
-				//TODO parse options
+				String fullOption;
+				//Expand to full
+				if(cmd[i].startsWith("--")) fullOption = cmd[i];
+				else fullOption = this.expandOption(cmd[i]);
+				
+				//Include value if necessary
+				if(this.shouldIncludeValue(fullOption))
+				{
+					//TODO include support for --option=value (not in this build)
+					argmap.put(fullOption, cmd[i+1]);
+				}
 			}
 		}
 		
 		return agit.gitCall(cmd[1], (String[]) argsList.toArray(), argmap);
 	}
+	
+	/**
+	 * If the option can be expanded, return the longer form
+	 * @param shortOption The option to be expanded
+	 * @return The expanded form if listed, shortOption otherwise
+	 */
+	private String expandOption(String shortOption)
+	{
+		if(this.expandMap.containsKey(shortOption))
+		{
+			return this.expandMap.get(shortOption);
+		}
+		else return shortOption;
+	}
+	
+	private boolean shouldIncludeValue(String fullOption)
+	{	
+		return false;
+	}
+	
 }
