@@ -13,19 +13,14 @@ public class GitInterpreter
 	private HashMap<String, String> expandMap;
 	private ArrayList<String> optionValueList;
 	
-	public GitInterpreter(HashMap <String, String> _expandMap)
+	public GitInterpreter()
 	{
 		this.parseArray = new ArrayList<String>();
 		this.parseArray.add("git");
-		/**
-		 * this way, the variables are already expanded from their own classes
-		 * thus, just putting them into this.expandMap makes it so each class has
-		 * their own selective variables, becuase really, all of them have a bit
-		 * different variables if you look at it. so this creates GitInterpreter as
-		 * an object in the previous class and contains the expanded map and can be
-		 * accessed from the previous class of whatever class it was in.
-		 */
-		this.expandMap = _expandMap;
+		//TODO add ssh (include ssh-keygen)
+		
+		this.expandMap = new HashMap<String, String>();
+		this.expandMap.put("-v", "--verbose");
 		
 		this.optionValueList = new ArrayList<String>();
 		//TODO Add value-requiring options
@@ -74,7 +69,10 @@ public class GitInterpreter
 				{
 					//TODO include support for --option=value (not in this build)
 					argmap.put(fullOption, cmd[i+1]);
+					//Removes the value from the argsList
+					argsList.remove(argsList.indexOf(cmd[i+1]));
 				}
+				else argmap.put(fullOption, null);
 			}
 		}
 		
@@ -97,7 +95,7 @@ public class GitInterpreter
 	
 	private boolean shouldIncludeValue(String fullOption)
 	{	
-		return false;
+		return this.optionValueList.contains(fullOption);
 	}
 	
 }

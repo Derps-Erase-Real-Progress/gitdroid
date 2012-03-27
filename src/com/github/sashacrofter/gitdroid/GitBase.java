@@ -1,9 +1,15 @@
 package com.github.sashacrofter.gitdroid;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public abstract class GitBase
 {
+	@SuppressWarnings("unused")
+	private static HashMap<String, String> expandMap;
+	@SuppressWarnings("unused")
+	private static ArrayList<String> optionValueList;
+	
 	/**
 	 * Performs the proper call to JGit, with no other parameters needed
 	 * @param agit The AGit calling the method.
@@ -17,5 +23,11 @@ public abstract class GitBase
 	public static String run(AGit agit, String[] args, HashMap<String, String> argmap)
 	{
 		return "Method not defined in this class.";
+	}
+	
+	public static void initExpandMap()
+	{
+		expandMap = new HashMap<String, String>();
+		optionValueList = new ArrayList<String>();
 	}
 }
