@@ -24,6 +24,29 @@ public class GitInterpreter
 		
 		this.optionValueList = new ArrayList<String>();
 		//TODO Add value-requiring options
+		
+		//Initializes the maps for each command
+		Git_Add.initExpandMap();
+		Git_Bisect.initExpandMap();
+		Git_Branch.initExpandMap();
+		Git_Checkout.initExpandMap();
+		Git_Clone.initExpandMap();
+		Git_Commit.initExpandMap();
+		Git_Diff.initExpandMap();
+		Git_Fetch.initExpandMap();
+		Git_Grep.initExpandMap();
+		Git_Init.initExpandMap();
+		Git_Log.initExpandMap();
+		Git_Merge.initExpandMap();
+		Git_Mv.initExpandMap();
+		Git_Pull.initExpandMap();
+		Git_Rebase.initExpandMap();
+		Git_Reset.initExpandMap();
+		Git_Rm.initExpandMap();
+		Git_Show.initExpandMap();
+		Git_Status.initExpandMap();
+		Git_Tag.initExpandMap();
+		
 	}
 	
 	/**
