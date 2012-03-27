@@ -9,17 +9,23 @@ public class GitInterpreter
 	 * The array of commands that gitdroid should parse specially.
 	 */
 	public final ArrayList<String> parseArray;
+
 	private HashMap<String, String> expandMap;
 	private ArrayList<String> optionValueList;
 	
-	public GitInterpreter()
+	public GitInterpreter(HashMap <String, String> _expandMap)
 	{
 		this.parseArray = new ArrayList<String>();
 		this.parseArray.add("git");
-		
-		this.expandMap = new HashMap<String, String>();
-		this.expandMap.put("-v", "--verbose");
-		//TODO expand all variables like this.
+		/**
+		 * this way, the variables are already expanded from their own classes
+		 * thus, just putting them into this.expandMap makes it so each class has
+		 * their own selective variables, becuase really, all of them have a bit
+		 * different variables if you look at it. so this creates GitInterpreter as
+		 * an object in the previous class and contains the expanded map and can be
+		 * accessed from the previous class of whatever class it was in.
+		 */
+		this.expandMap = _expandMap;
 		
 		this.optionValueList = new ArrayList<String>();
 		//TODO Add value-requiring options
