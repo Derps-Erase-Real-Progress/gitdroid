@@ -3,5 +3,7 @@
 
     <string name="hello">Hello World, GitDroidActivity!</string>
     <string name="app_name">GitDroid</string>
+    <string name="commandPrompt">enter command</string>
+    <string name="enterPrompt">Enter</string>
 
 </resources>

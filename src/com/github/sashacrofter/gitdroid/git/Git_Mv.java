@@ -1,15 +1,15 @@
-package com.github.sashacrofter.gitdroid;
+package com.github.sashacrofter.gitdroid.git;
 
 import java.util.HashMap;
 
 
-public class Git_Reset extends GitBase {
+public class Git_Mv extends GitBase {
 	
 	
 	public static String run(AGit agit, String[] args, HashMap<String, String> argmap)
 	{
 		//TODO do JGit add call
-		return "Called Reset";
+		return "Called Mv";
 	}
 
-}//close Git_Reset
+}//close Git_Mv

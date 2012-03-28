@@ -1,4 +1,4 @@
-package com.github.sashacrofter.gitdroid;
+package com.github.sashacrofter.gitdroid.git;
 
 import java.util.HashMap;
 

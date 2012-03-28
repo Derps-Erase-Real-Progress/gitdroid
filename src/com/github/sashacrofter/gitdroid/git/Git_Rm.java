@@ -1,15 +1,15 @@
-package com.github.sashacrofter.gitdroid;
+package com.github.sashacrofter.gitdroid.git;
 
 import java.util.HashMap;
 
 
-public class Git_Branch extends GitBase {
+public class Git_Rm extends GitBase {
 	
 	
 	public static String run(AGit agit, String[] args, HashMap<String, String> argmap)
 	{
 		//TODO do JGit add call
-		return "Called Branch";
+		return "Called Rm";
 	}
 
-}//close Git_Branch
+}//close Git_Rm

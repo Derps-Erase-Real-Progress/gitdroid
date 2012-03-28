@@ -1,15 +1,15 @@
-package com.github.sashacrofter.gitdroid;
+package com.github.sashacrofter.gitdroid.git;
 
 import java.util.HashMap;
 
 
-public class Git_Merge extends GitBase {
+public class Git_Pull extends GitBase {
 	
 	
 	public static String run(AGit agit, String[] args, HashMap<String, String> argmap)
 	{
 		//TODO do JGit add call
-		return "Called Merge";
+		return "Called Pull";
 	}
 
-}//close Git_Merge
+}//close Git_Pull
