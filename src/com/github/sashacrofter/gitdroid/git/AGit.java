@@ -37,7 +37,7 @@ public class AGit
 		}
 		//TODO make new repository still
 		
-		git = new Git(null);
+		git = new Git(repo);
 	}//close constructor
 	
 	public File getDir() {
