@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 public class GitDroidActivity extends Activity {
 	
@@ -19,6 +20,7 @@ public class GitDroidActivity extends Activity {
 	
 	private Button goButton;
 	private EditText commandInput;
+	private TextView outputTextView;
 	
     /** Called when the activity is first created. */
     @Override
@@ -32,6 +34,7 @@ public class GitDroidActivity extends Activity {
         
         goButton = (Button) findViewById(R.id.goButton);
         commandInput = (EditText) findViewById(R.id.commandInput);
+        outputTextView = (TextView) findViewById(R.id.outputTextView);
         
         goButton.setOnClickListener(
         		new View.OnClickListener() {
@@ -39,5 +42,10 @@ public class GitDroidActivity extends Activity {
 						session.execute(commandInput.getText().toString());
 					}
 				});
+    }
+    
+    public void output(String string)
+    {
+    	outputTextView.setText(outputTextView.getText()+"\n"+string);
     }
 }
