@@ -20,13 +20,11 @@ public class GitDroidActivity extends Activity {
 	private Button goButton;
 	private EditText commandInput;
 	
-	private Log log;
-	
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
-    	log.d("gitdroidActivity", "called onCreate()");
+    	Log.d("gitdroidActivity", "called onCreate()");
     	this.session = new TerminalEmulator();
     	
         super.onCreate(savedInstanceState);
