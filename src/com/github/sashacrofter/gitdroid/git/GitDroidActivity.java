@@ -1,18 +1,15 @@
 package com.github.sashacrofter.gitdroid.git;
 
-import com.github.sashacrofter.gitdroid.R;
-import com.github.sashacrofter.gitdroid.R.layout;
-import com.github.sashacrofter.gitdroid.io.TerminalEmulator;
-
 import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.github.sashacrofter.gitdroid.R;
+import com.github.sashacrofter.gitdroid.io.TerminalEmulator;
 
 public class GitDroidActivity extends Activity {
 	
@@ -22,7 +19,7 @@ public class GitDroidActivity extends Activity {
 	private EditText commandInput;
 	private TextView outputTextView;
 	
-	private final String tag = "GD";
+	private final String tag = "gitdroid";
 	
     /** Called when the activity is first created. */
     @Override

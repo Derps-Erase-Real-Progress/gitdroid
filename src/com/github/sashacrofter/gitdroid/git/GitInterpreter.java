@@ -70,16 +70,17 @@ public class GitInterpreter
 	 * @return The output of any commands.
 	 */
 	public String parseToAGit(AGit agit, String command)
-	{
+	{ //TODO this causes errors in both malformed and properly formed commands;
 		//TODO order the commands properly
 		//TODO change options to argmap form
 		String[] cmd = command.split(" ");
 		ArrayList<String> argsList = new ArrayList<String>();
 		HashMap<String, String> argmap = new HashMap<String, String>();
-		for(int i=2;i>cmd.length;i++)
+		for(int i=2;i>cmd.length;i++) 
 		{
 			//Add to argsList or argmap
 			if(!cmd[i].startsWith("-")) argsList.add(cmd[i]); //If not option, argsList
+			//ArrayIndexOutOfBoundsException on $ git
 			else //Then option
 			{
 				String fullOption;
